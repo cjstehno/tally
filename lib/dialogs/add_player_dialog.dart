@@ -18,6 +18,7 @@ class _AddPlayerDialogState extends State<AddPlayerDialog> {
         autofocus: true,
         controller: _controller,
         decoration: const InputDecoration(hintText: 'Player name'),
+        onSubmitted: (value) => Navigator.pop(context, value),
       ),
       actions: [
         TextButton(
