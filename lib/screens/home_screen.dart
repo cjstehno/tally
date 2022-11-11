@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:tally/dialogs/add_player_dialog.dart';
+import 'package:tally/dialogs/reset_score_confirm_dialog.dart';
 import 'package:tally/models/player.dart';
 import 'package:tally/providers/players.dart';
 import 'package:tally/widgets/player_grid.dart';
@@ -22,10 +23,14 @@ class HomeScreen extends StatelessWidget {
             title: const Text('Tally'),
             actions: [
               IconButton(
-                onPressed: () {
-                  // FIXME: clear the scores
-                  print('Clearing the scores.');
-                },
+                onPressed: () => showDialog(
+                  context: context,
+                  builder: (ctx) => const ResetScoresConfirmDialog(),
+                ).then((confirmed) {
+                  if (confirmed) {
+                    context.read<Players>().resetScores();
+                  }
+                }),
                 icon: const Icon(
                   Icons.lock_reset,
                 ),

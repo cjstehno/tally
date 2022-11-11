@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:tally/dialogs/remove_player_confirm_dialog.dart';
+import 'package:tally/dialogs/update_score_dialog.dart';
 import 'package:tally/models/player.dart';
 import 'package:tally/providers/players.dart';
 
@@ -15,10 +16,14 @@ class ScoreCard extends StatelessWidget {
       // margin: const EdgeInsets.all(8.0),
       padding: const EdgeInsets.all(8.0),
       child: InkWell(
-        onTap: () {
-          // FIXME: open score editor
-          print('Opening score editor.');
-        },
+        onTap: () => showDialog(
+          context: context,
+          builder: (ctx) => UpdateScoreDialog(player.name, player.score),
+        ).then((newScore) {
+          if (newScore != null) {
+            context.read<Players>().updateScore(player.name, newScore);
+          }
+        }),
         onDoubleTap: () => showDialog(
           context: context,
           builder: (ctx) => RemovePlayerConfirmDialog(player.name),

@@ -1,16 +1,16 @@
+// ignore_for_file: avoid_print
 
 import 'package:flutter/foundation.dart';
 import 'package:tally/models/player.dart';
 
 class Players with ChangeNotifier {
-
   final List<Player> _players = [];
   bool _loaded = false;
 
   /// Load the player data from the local storage.
   Future<void> load() async {
-    if(!_loaded){
-        // FIXME: load from localstorage
+    if (!_loaded) {
+      // FIXME: load from localstorage
       _players.add(Player('Ariana', 42));
       _players.add(Player('Christopher', 102));
       _players.add(Player('Sunny', 74));
@@ -47,8 +47,15 @@ class Players with ChangeNotifier {
     // FIXME: update score for player in local storage
     final player = _players.where((p) => p.name == playerName).first;
     player.score = newScore;
+    print('Updated score for $playerName to $newScore');
     notifyListeners();
   }
 
-  // FIXME: reset
+  Future<void> resetScores() async {
+    // FIXME: clear local storage
+    _players.forEach((p) => p.score = 0);
+
+    print('All scores reset to zero.');
+    notifyListeners();
+  }
 }
