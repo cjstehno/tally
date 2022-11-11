@@ -6,11 +6,28 @@ A simple web-based Flutter app for keeping track of players and points for board
 
 ## Building
 
+To build for release run:
 
-## Running for Development
+    flutter build web
+
+## Development Running
+
+You can run in development mode with:
+
+    flutter run -d chrome
+
+## Local Running
+
+You can run the local build artifacts using the following, executed in the `build/web` directory:
+
+    python3 -m http.server 8080
 
 
-## Publishing
+## Publish Site
+
+TBD
+
+Then push the changes in the production site repo to publish the changes.
 
 
 ## License
