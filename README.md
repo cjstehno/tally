@@ -1,8 +1,22 @@
 # Tally
 
-> *Work in Progress.* - this is not a working project yet.
-
 A simple web-based Flutter app for keeping track of players and points for board games.
+
+![App screenshot](screenshot.png)
+
+You can use the live version of it at https://cjstehno.github.io/tally
+
+With it you can:
+- Use the `+` button to add players.
+- Double tap on a player to remove them.
+- Tap on a player to update their score (as a raw number `42`, or an adjustment value such as `-10` or `+25`).
+- Reset all the scores to '0' with the reset button.
+
+The data is stored in the browser "local storage" system so that as long as you use the same browser, your active scores will be saved even between reloads. On that note, your scores are ONLY on the browser, so nobody else can see them.
+
+It's meant to be simple and ad-free, nothing high-end here. If there is interest in it, I could code up the Android app version and I have considered making it support some sort of server backend for shared scores... but that is for some other time.
+
+Oh, and yes, the color scheme is loud... I wanted something fun for game time. :-)
 
 ## Building
 
@@ -36,4 +50,4 @@ Then, in the "app clone" commit and push the changes to deploy the site.
 
 ## License
 
-??
+Apache 2 I guess.
