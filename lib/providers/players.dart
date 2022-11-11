@@ -11,11 +11,6 @@ class Players with ChangeNotifier {
   Future<void> load() async {
     if (!_loaded) {
       // FIXME: load from localstorage
-      _players.add(Player('Ariana', 42));
-      _players.add(Player('Christopher', 102));
-      _players.add(Player('Sunny', 74));
-      _players.add(Player('Wyatt', 22));
-
       print('Loaded ${_players.length} players.');
 
       _loaded = true;

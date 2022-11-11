@@ -12,10 +12,21 @@ class PlayerGrid extends StatelessWidget {
       width: double.infinity,
       height: double.infinity,
       color: Colors.lightBlueAccent.shade100,
-      child: GridView.count(
-        crossAxisCount: 2,
-        children: players.players.map((p) => ScoreCard(player: p)).toList(),
-      ),
+      child: players.players.isNotEmpty
+          ? GridView.count(
+              crossAxisCount: 2,
+              children:
+                  players.players.map((p) => ScoreCard(player: p)).toList(),
+            )
+          : const Center(
+              child: Text(
+              'No players.',
+              style: TextStyle(
+                color: Colors.deepPurpleAccent,
+                fontSize: 32.0,
+                fontStyle: FontStyle.italic,
+              ),
+            )),
     );
   }
 }
