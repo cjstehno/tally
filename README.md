@@ -8,7 +8,7 @@ A simple web-based Flutter app for keeping track of players and points for board
 
 To build for release run:
 
-    flutter build web
+    flutter build web --base-href=/tally/
 
 ## Development Running
 
@@ -25,9 +25,13 @@ You can run the local build artifacts using the following, executed in the `buil
 
 ## Publish Site
 
-TBD
+To publish the site, you need to have the `app` branch checked out as a separate clone. Build the web application, as described above and then run the following to copy the artifacts to the site repository:
 
-Then push the changes in the production site repo to publish the changes.
+    rsync -r build/web/* <path_to_app_clone>/
+
+where `<path_to_app_clone>` is the path to your separate clone on the `app` branch.
+
+Then, in the "app clone" commit and push the changes to deploy the site.
 
 
 ## License
