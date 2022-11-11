@@ -1,28 +1,30 @@
 import 'package:flutter/material.dart';
-import 'package:logging/logging.dart';
-import 'package:tally/tally_home.dart';
+import 'package:provider/provider.dart';
+import 'package:tally/providers/players.dart';
+import 'package:tally/screens/home_screen.dart';
 
-void main(){
-  Logger.root.level = Level.ALL; // defaults to Level.INFO
-  Logger.root.onRecord.listen((record) {
-    // ignore: avoid_print
-    print('${record.level.name}: ${record.message}');
-  });
-
+void main() {
   runApp(TallyApp());
 }
 
 class TallyApp extends StatelessWidget {
-
   @override
   Widget build(final BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Tally',
-      theme: ThemeData(
-        primarySwatch: Colors.purple,
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => Players()),
+      ],
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'Tally',
+        theme: ThemeData(
+          primarySwatch: Colors.purple,
+        ),
+        home: const HomeScreen(),
+        routes: {
+          HomeScreen.routeName: (ctx) => const HomeScreen(),
+        },
       ),
-      home: TallyHome(),
     );
   }
 }

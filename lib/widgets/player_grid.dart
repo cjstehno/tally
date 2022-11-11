@@ -1,0 +1,21 @@
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:tally/providers/players.dart';
+import 'package:tally/widgets/score_card.dart';
+
+class PlayerGrid extends StatelessWidget {
+  @override
+  Widget build(final BuildContext context) {
+    final players = context.watch<Players>();
+
+    return Container(
+      width: double.infinity,
+      height: double.infinity,
+      color: Colors.lightBlueAccent.shade100,
+      child: GridView.count(
+        crossAxisCount: 2,
+        children: players.players.map((p) => ScoreCard(player: p)).toList(),
+      ),
+    );
+  }
+}

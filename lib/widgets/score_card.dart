@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:logging/logging.dart';
-import 'package:tally/player.dart';
+import 'package:provider/provider.dart';
+import 'package:tally/dialogs/remove_player_confirm_dialog.dart';
+import 'package:tally/models/player.dart';
+import 'package:tally/providers/players.dart';
 
 class ScoreCard extends StatelessWidget {
-  final log = Logger('TallyHome');
   final Player player;
 
-  ScoreCard({super.key, required this.player});
+  const ScoreCard({super.key, required this.player});
 
   @override
   Widget build(final BuildContext context) {
@@ -16,12 +17,16 @@ class ScoreCard extends StatelessWidget {
       child: InkWell(
         onTap: () {
           // FIXME: open score editor
-          log.warning('Opening score editor.');
+          print('Opening score editor.');
         },
-        onDoubleTap: (){
-          // FIXME: open player editor
-          log.warning('Confirming player delete.');
-        },
+        onDoubleTap: () => showDialog(
+          context: context,
+          builder: (ctx) => RemovePlayerConfirmDialog(player.name),
+        ).then((confirmed) {
+          if (confirmed) {
+            context.read<Players>().remove(player.name);
+          }
+        }),
         child: Card(
           elevation: 10,
           color: Colors.amberAccent,

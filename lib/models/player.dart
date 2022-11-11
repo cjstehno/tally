@@ -3,4 +3,7 @@ class Player {
   int score;
 
   Player(this.name, this.score);
+
+  @override
+  String toString() => 'Player(name:$name, score:$score)';
 }
