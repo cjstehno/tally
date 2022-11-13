@@ -19,6 +19,8 @@ class Players with ChangeNotifier {
   /// Load the player data from the local storage.
   Future<void> load() async {
     if (!_loaded) {
+      _loaded = true;
+
       _players.clear();
       _history.clear();
 
@@ -33,8 +35,6 @@ class Players with ChangeNotifier {
         _players.add(Player(pName, pScore));
       });
       print('Loaded ${_players.length} players.');
-
-      _loaded = true;
     }
   }
 

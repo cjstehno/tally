@@ -11,6 +11,7 @@ With it you can:
 - Double tap on a player to remove them.
 - Tap on a player to update their score (as a raw number `42`, or an adjustment value such as `-10` or `+25`).
 - Reset all the scores to '0' with the reset button.
+- View the score change history with the history button.
 
 The data is stored in the browser "local storage" system so that as long as you use the same browser, your active scores will be saved even between reloads. On that note, your scores are ONLY on the browser, so nobody else can see them.
 
