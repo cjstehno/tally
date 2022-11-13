@@ -64434,7 +64434,8 @@ mf(a){var s=0,r=A.a2(t.H),q=this,p,o,n,m
 var $async$mf=A.a3(function(b,c){if(b===1)return A.a_(c,r)
 while(true)switch(s){case 0:s=!q.d?2:3
 break
-case 2:p=q.b
+case 2:q.d=!0
+p=q.b
 B.b.L(p)
 o=q.c
 B.b.L(o)
@@ -64451,7 +64452,6 @@ case 5:A.fP("Loaded "+o.length+" history items.")
 s=6
 return A.Z(J.jY(J.b0(n.b.c,"players"),new A.Y5(q)),$async$mf)
 case 6:A.fP("Loaded "+p.length+" players.")
-q.d=!0
 case 3:return A.a0(null,r)}})
 return A.a1($async$mf,r)},
 F(a,b){return this.a_n(0,b)},
