@@ -13,7 +13,6 @@ class ScoreCard extends StatelessWidget {
   @override
   Widget build(final BuildContext context) {
     return Container(
-      // margin: const EdgeInsets.all(8.0),
       padding: const EdgeInsets.all(8.0),
       child: InkWell(
         onTap: () => showDialog(
