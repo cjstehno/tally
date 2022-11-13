@@ -19,11 +19,12 @@ class Players with ChangeNotifier {
   /// Load the player data from the local storage.
   Future<void> load() async {
     if (!_loaded) {
+      _players.clear();
+      _history.clear();
+
       await storage.ready;
 
-      // FIXME: history
-
-      storage.getItem(historyKey).forEach((ent) {
+      await storage.getItem(historyKey).forEach((ent) {
         _history.add(ent);
       });
       print('Loaded ${_history.length} history items.');
